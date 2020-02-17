@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/mblahnik/PulsePI_APP/issues"
   },
-  "homepage": "https://github.com/mblahnik/PulsePI_APP#readme"
+  "homepage": "https://github.com/mblahnik/PulsePI_APP#readme",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "electron": "^8.0.1",
+    "local-devices": "^3.0.0"
+  }
 }
