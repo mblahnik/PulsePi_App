@@ -12,14 +12,14 @@ $(document).ready(function() {
 ClientSocket.getInstance().addObserver(function() {
   if (ClientSocket.getInstance().IsConnected()) {
     setUpDisconnectForm();
-    $("#wifi-icon")
+    $("#material-icons")
       .removeClass()
-      .addClass("fas fa-thumbs-up fa-fw");
+      .addClass("wifi");
   } else {
     setUpConnectionForm();
-    $("#wifi-icon")
+    $("#material-icons")
       .removeClass()
-      .addClass("fas fa-thumbs-down fa-fw");
+      .addClass("wifi_off");
   }
 });
 
