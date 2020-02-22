@@ -22,11 +22,8 @@ var ClientSocket = (function() {
     var sock = new net.Socket();
     sock.setKeepAlive(true, 5000);
     var connectionStatus = false;
-    sock.on("error", function(error) {
-      console.log("SOCKET ERROR");
-    });
+    sock.on("error", function(error) {});
     sock.on("close", function(x) {
-      console.log("SOCKET CLOSED");
       setConnectionStatus(false);
     });
 
