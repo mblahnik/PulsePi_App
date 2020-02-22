@@ -1,7 +1,12 @@
 const ClientSocket = require("./ArduinoConnction/ClientSocket");
 const NetworkScanner = require("./ArduinoConnction/NetworkScanner");
+const $ = require("jquery");
 const SERVER_PORT = 23;
 const arduinoMac = "a4:cf:12:85:61:10";
+
+$(document).ready(function() {
+  setUpConnectionForm();
+});
 
 //Set the Icon for the dropdown depending on the Connection state
 ClientSocket.getInstance().addObserver(function() {
@@ -10,35 +15,8 @@ ClientSocket.getInstance().addObserver(function() {
     document.getElementById("wifi-icon").className = "fas fa-thumbs-up fa-fw";
   } else {
     setUpConnectionForm();
-    document.getElementById("wifi-icon").className = "fas fs-thumbs-down fa-fw";
+    document.getElementById("wifi-icon").className = "fas fa-thumbs-down fa-fw";
   }
-});
-
-//Add listen to the connect button
-document.getElementById("connect-btn").addEventListener("click", function() {
-  let ip = document.getElementById("ipInput").value;
-  DeviceFound(ip);
-});
-
-//Add listener to auto scan button
-document.getElementById("scan-btn").addEventListener("click", function() {
-  const scan = new NetworkScanner();
-  StartScanning();
-  scan
-    .findDeviceByMac(arduinoMac)
-    .then(result => {
-      ip = result;
-    })
-    .then(() => {
-      if (ip) {
-        DeviceFound(ip);
-      } else {
-        DeviceNotFound();
-      }
-    })
-    .then(() => {
-      DoneScanning();
-    });
 });
 
 //Set the dropdown to the Disconnect from device form.
@@ -49,6 +27,14 @@ function setUpDisconnectForm() {
   </h6>
    <button type="button" class="btn btn-primarty" id="disconnect">Disconnect</button>
   `;
+  addDisconnectListener();
+}
+
+function addDisconnectListener() {
+  document.getElementById("disconnect").addEventListener("click", function() {
+    console.log("disconnect pressed");
+    ClientSocket.getInstance().disconnect();
+  });
 }
 
 //Set the dropdown to the Connect to device form
@@ -73,17 +59,51 @@ function setUpConnectionForm() {
     <div class="input-group mb-3">
       <input
         type="text"
+        id="ipInput"
         class="form-control"
         placeholder="Ip Address"
       />
       <div class="input-group-append">
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" id="connect-btn">
           Connect
         </button>
       </div>
     </div>
   </div>
 </form>`;
+  addConnectListen();
+  addScanListener();
+}
+
+//Add listen to the connect button
+function addConnectListen() {
+  document.getElementById("connect-btn").addEventListener("click", function() {
+    let ip = document.getElementById("ipInput").value;
+    DeviceFound(ip);
+  });
+}
+
+//Add listener to auto scan button
+function addScanListener() {
+  document.getElementById("scan-btn").addEventListener("click", function() {
+    const scan = new NetworkScanner();
+    StartScanning();
+    scan
+      .findDeviceByMac(arduinoMac)
+      .then(result => {
+        ip = result;
+      })
+      .then(() => {
+        if (ip) {
+          DeviceFound(ip);
+        } else {
+          DeviceNotFound();
+        }
+      })
+      .then(() => {
+        DoneScanning();
+      });
+  });
 }
 
 /*Hook for start of scan*/
@@ -102,7 +122,6 @@ function StartScanning() {
 function DeviceFound(ip) {
   const sock = ClientSocket.getInstance();
   sock.setInputHandler(x => console.log(x.toString()));
-  sock.setErrorHandler(x => DeviceNotFound());
   sock.connect(ip, SERVER_PORT);
 }
 

@@ -20,6 +20,7 @@ var ClientSocket = (function() {
     }
     //private variables
     var sock = new net.Socket();
+    sock.setKeepAlive(true, 5000);
     var connectionStatus = false;
     sock.on("error", function(error) {
       console.log("SOCKET ERROR");
