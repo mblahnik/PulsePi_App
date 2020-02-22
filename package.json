@@ -19,6 +19,7 @@
   "dependencies": {
     "bootstrap": "^4.4.1",
     "electron": "^8.0.1",
+    "jquery": "^3.4.1",
     "local-devices": "^3.0.0"
   }
 }
