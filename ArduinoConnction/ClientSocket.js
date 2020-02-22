@@ -1,6 +1,6 @@
 const net = require("net");
 
-/*SINGLETON */
+/*OBSERVABLE SINGLETON */
 
 var ClientSocket = (function() {
   // Instance stores a reference to the Singleton
@@ -13,27 +13,38 @@ var ClientSocket = (function() {
     function notifyObservers() {
       observers.forEach(x => x());
     }
-
+    function setConnectionStatus(bool) {
+      if (bool == connectionStatus) return;
+      connectionStatus = bool;
+      notifyObservers();
+    }
     //private variables
     var sock = new net.Socket();
     var connectionStatus = false;
     sock.on("error", function(error) {
-      sock.end();
-      notifyObservers();
-      connectionStatus = false;
+      console.log("SOCKET ERROR");
+    });
+    sock.on("close", function(x) {
+      console.log("SOCKET CLOSED");
+      setConnectionStatus(false);
     });
 
     return {
       // Public methods and variables
       connect: function(ip, port) {
-        sock.connect(port, ip, function() {
-          connectionStatus = true;
-          notifyObservers();
+        return sock.connect(port, ip, function() {
+          sock.write("1");
+          setConnectionStatus(true);
         });
       },
       setInputHandler: function(fn) {
         sock.on("data", function(data) {
           fn(data);
+        });
+      },
+      setErrorHandler: function(fn) {
+        sock.on("error", function() {
+          fn();
         });
       },
       IsConnected: function() {
@@ -43,9 +54,8 @@ var ClientSocket = (function() {
         observers.push(fn);
       },
       disconnect: function(fn) {
-        sock.end();
-        connectionStatus = false;
-        notifyObservers();
+        sock.destroy();
+        setConnectionStatus(false);
       }
     };
   }
@@ -61,31 +71,5 @@ var ClientSocket = (function() {
     }
   };
 })();
-
-/*class ClientSocket {
-  constructor(ipAddress, port) {
-    this.server_port = port;
-    this.ip = ipAddress;
-    this.socket = new net.Socket();
-  }
-
-  setInputHandler(fn) {
-    this.socket.on("data", function(data) {
-      fn(data);
-    });
-  }
-
-  setErrorHandler(fn) {
-    this.socket.on("error", function(error) {
-      fn(error);
-    });
-  }
-
-  connect() {
-    this.socket.connect(this.server_port, this.ip, function() {
-      console.log("Connected");
-    });
-  }
-} */
 
 module.exports = ClientSocket;

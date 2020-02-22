@@ -3,6 +3,7 @@ const NetworkScanner = require("./ArduinoConnction/NetworkScanner");
 const SERVER_PORT = 23;
 const arduinoMac = "a4:cf:12:85:61:10";
 
+//Set the Icon for the dropdown depending on the Connection state
 ClientSocket.getInstance().addObserver(function() {
   if (ClientSocket.getInstance().IsConnected()) {
     setUpDisconnectForm();
@@ -13,6 +14,13 @@ ClientSocket.getInstance().addObserver(function() {
   }
 });
 
+//Add listen to the connect button
+document.getElementById("connect-btn").addEventListener("click", function() {
+  let ip = document.getElementById("ipInput").value;
+  DeviceFound(ip);
+});
+
+//Add listener to auto scan button
 document.getElementById("scan-btn").addEventListener("click", function() {
   const scan = new NetworkScanner();
   StartScanning();
@@ -33,21 +41,17 @@ document.getElementById("scan-btn").addEventListener("click", function() {
     });
 });
 
+//Set the dropdown to the Disconnect from device form.
 function setUpDisconnectForm() {
   document.getElementById("connection-dropdown").innerHTML = `
   <h6 class="dropdown-header" id="connection">
       You are Connected
   </h6>
    <button type="button" class="btn btn-primarty" id="disconnect">Disconnect</button>
-   <script>
-     document.getElementById("disconnect").addEventListener("click",function(){
-       console.log("disconnect pressed");
-      ClientSocket.getInstance().disconnect();
-     });
-   </script>
   `;
 }
 
+//Set the dropdown to the Connect to device form
 function setUpConnectionForm() {
   document.getElementById(
     "connection-dropdown"
@@ -82,7 +86,7 @@ function setUpConnectionForm() {
 </form>`;
 }
 
-/*Auto scan Start*/
+/*Hook for start of scan*/
 function StartScanning() {
   document.getElementById("scan-status").innerHTML = ``;
   document.getElementById("scan-btn").innerHTML = ` <span
@@ -97,8 +101,8 @@ function StartScanning() {
 /*What to do when the device is found via auto scan*/
 function DeviceFound(ip) {
   const sock = ClientSocket.getInstance();
-  //const sock = new ClientSocket(ip, SERVER_PORT);
-  sock.setInputHandler(x => console.log(x));
+  sock.setInputHandler(x => console.log(x.toString()));
+  sock.setErrorHandler(x => DeviceNotFound());
   sock.connect(ip, SERVER_PORT);
 }
 
