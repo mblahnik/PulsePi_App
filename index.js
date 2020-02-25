@@ -5,7 +5,8 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    // frame: false,
+    icon: __dirname + './assets/img/icon/heart.png',
+    //  frame: false,
     webPreferences: {
       nodeIntegration: true
     }
@@ -13,6 +14,8 @@ function createWindow() {
 
   // and load the index.html of the app.
   win.loadFile('index.html');
+
+  win.setMenu(null);
 
   // Open the DevTools.
   //win.webContents.openDevTools();

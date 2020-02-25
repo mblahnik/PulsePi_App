@@ -14,7 +14,7 @@ $(document).ready(function() {
     'margin-left': $('#side').width() + 'px'
   });
   $('#content').css({
-    'margin-top': $('#top').height() + 15 + 'px'
+    'margin-top': $('#top').height() + 17 + 'px'
   });
   $('#page-top').css({
     'margin-top': $('#titlebar').height() + 'px'
