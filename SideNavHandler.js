@@ -3,6 +3,10 @@ $(document).ready(function() {
   $.get('./Component/DashBoardComponent.html', function(data) {
     $('#root').html(data);
   });
+  //Since the side nav is fixed the content needs to be shifted over a distance equal to the sidnav width
+  $('#content').css({
+    'margin-left': $('#side').width() + 'px'
+  });
 });
 
 //Add Listener to DashBoard Link

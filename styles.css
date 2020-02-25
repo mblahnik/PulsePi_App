@@ -4,8 +4,11 @@
 
 /*css for side bar */
 .navbar-brand.d-flex.justify-content-center.align-items-center.sidebar-brand.m-0 {
-  color: rgb(255,105,180);
+  color: rgb(255, 105, 180);
 }
 
-
-
+/*Fix the side nav */
+#side {
+  position: fixed;
+  z-index: 2;
+}
