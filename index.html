@@ -15,8 +15,9 @@
 </head>
 
 <body id="page-top">
+    
     <div id="wrapper">
-        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" id="side">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 fixed-left" id="side">
             <div class="container d-flex flex-column p-0"><span style="color: #dd281c;"><img class="img-fluid" src="assets/img/newLogo2.gif"></span>
           
                 <hr class="sidebar-divider my-0" />
@@ -52,7 +53,8 @@
     <div class="d-flex flex-column" id="content-wrapper">
         <div id="content">
             <nav
-                    class="navbar navbar-light navbar-expand bg-info shadow mb-4 topbar static-top" style="height: 50px"
+                    class="navbar navbar-light navbar-expand bg-info shadow mb-4 topbar fixed-top" style="height: 50px"
+                    id= "top"
             >
                 <div class="container-fluid">
                 
@@ -157,11 +159,12 @@
         </div>
 
         </div>
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+        </div>
+        <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
 
         <script src="ConnectionScripts.js"></script>
         <script src="SideNavHandler.js"></script>
-        <script src="TitleBarHandler.js"></script>
+      <!--  <script src="TitleBarHandler.js"></script> -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>

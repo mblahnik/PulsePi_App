@@ -1,11 +1,23 @@
 //Set default view to Dashboard
+
+$(window).on('resize', function() {
+  $('#content').height($(window).height() - 50);
+});
+
 $(document).ready(function() {
+  $('#content').height($(window).height() - 50);
   $.get('./Component/DashBoardComponent.html', function(data) {
     $('#root').html(data);
   });
   //Since the side nav is fixed the content needs to be shifted over a distance equal to the sidnav width
-  $('#content').css({
+  $('#root').css({
     'margin-left': $('#side').width() + 'px'
+  });
+  $('#content').css({
+    'margin-top': $('#top').height() + 15 + 'px'
+  });
+  $('#page-top').css({
+    'margin-top': $('#titlebar').height() + 'px'
   });
 });
 
