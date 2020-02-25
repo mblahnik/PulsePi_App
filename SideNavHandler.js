@@ -1,36 +1,44 @@
+//Jquery is declared elsewhere.
+
+//Reset the Component locations on resize.
+$(window).on('resize', setWindowSizes);
+
 //Set default view to Dashboard
-
-$(window).on('resize', function() {
-  $('#content').height($(window).height() - 50);
-});
-
 $(document).ready(function() {
-  $('#content').height($(window).height() - 50);
   $.get('./Component/DashBoardComponent.html', function(data) {
     $('#root').html(data);
   });
-  //Since the side nav is fixed the content needs to be shifted over a distance equal to the sidnav width
+  setWindowSizes();
+});
+
+//Force the Contents and nav bars into the correct positions.
+function setWindowSizes() {
+  $('#content').height($(window).height() - 50); //50 is the height of the Top nav.
   $('#root').css({
     'margin-left': $('#side').width() + 'px'
   });
   $('#content').css({
-    'margin-top': $('#top').height() + 17 + 'px'
+    'margin-top': $('#top').height() + 17 + 'px' //17 is an arbitrary number. Increace it to move the contents down.
   });
   $('#page-top').css({
     'margin-top': $('#titlebar').height() + 'px'
   });
-});
+}
+
+/**
+ * @description Removes the 'active' class from all nav-links and then adds 'active' to elements with the input id.
+ * @param {*} id the id of the nav link tag.
+ */
+function setNavLinkActive(id) {
+  $('.nav-link.active').removeClass('active');
+  $('#' + id).addClass('active');
+}
 
 //Add Listener to DashBoard Link
 $('#dashboardLink').click(function() {
   $.get('./Component/DashBoardComponent.html', function(data) {
     $('#root').html(data);
-    $('.nav-link.active')
-      .removeClass()
-      .addClass('nav-link');
-    $('#dashboardLink')
-      .removeClass()
-      .addClass('nav-link active');
+    setNavLinkActive('dashboardLink');
   });
 });
 
@@ -38,12 +46,7 @@ $('#dashboardLink').click(function() {
 $('#profileLink').click(function() {
   $.get('./Component/ProfileComponent.html', function(data) {
     $('#root').html(data);
-    $('.nav-link.active')
-      .removeClass()
-      .addClass('nav-link');
-    $('#profileLink')
-      .removeClass()
-      .addClass('nav-link active');
+    setNavLinkActive('profileLink');
   });
 });
 
@@ -51,11 +54,6 @@ $('#profileLink').click(function() {
 $('#historyLink').click(function() {
   $.get('./Component/HistoryComponent.html', function(data) {
     $('#root').html(data);
-    $('.nav-link.active')
-      .removeClass()
-      .addClass('nav-link');
-    $('#historyLink')
-      .removeClass()
-      .addClass('nav-link active');
+    setNavLinkActive('historyLink');
   });
 });
