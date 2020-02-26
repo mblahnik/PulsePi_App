@@ -19,6 +19,7 @@ var User = (function() {
 
     //private variables
     let loggedIn = false;
+    let avatarURL = "";
 
     return {
       // Public methods and variables
@@ -27,6 +28,9 @@ var User = (function() {
       },
       isLoggedIn: function() {
         return loggedIn;
+      },
+      getAvatarUrl: function() {
+        return avatarURL;
       }
     };
   }

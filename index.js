@@ -5,7 +5,7 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    icon: __dirname + "./assets/img/icon/heart.png",
+    icon: __dirname + "./assets/img/icon/heart.png", //Set the icon for the system tray
     //  frame: false,
     webPreferences: {
       nodeIntegration: true
@@ -19,7 +19,7 @@ function createWindow() {
   win.setMenu(null);
 
   // Open the DevTools.
-  win.webContents.openDevTools();
+  //win.webContents.openDevTools();
 }
 
 // This method will be called when Electron has finished
