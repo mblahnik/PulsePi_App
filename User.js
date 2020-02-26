@@ -23,6 +23,7 @@ var User = (function() {
 
     return {
       // Public methods and variables
+      UserName: "TEST",
       addObserver: function(fn) {
         observers.push(fn);
       },
