@@ -1,8 +1,6 @@
-const account = require('./User');
-
-account.getInstance().addObserver(() => {
+User.getInstance().addObserver(() => {
   //User just logged in
-  if (account.getInstance().isLoggedIn()) {
+  if (User.getInstance().isLoggedIn()) {
     setLinksLoggedIn();
   }
   //User just logged out

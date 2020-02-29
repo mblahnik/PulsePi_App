@@ -29,20 +29,20 @@ var User = (function() {
         return loggedIn;
       },
       LogInAccount: function(account) {
-        this.AccountId = account['AccountId'];
-        this.UserName = account['UserName'];
-        this.AvatarUrl = account['AvatarUrl'];
-        this.Email = account['Email'];
-        this.FName = account['FName'];
-        this.LName = account['LName'];
-        this.MName = account['MName'];
-        this.BirthDate = account['BirthDate'];
+        //this.AccountId = account['AccountId'];
+        this.UserName = account['userName'];
+        this.AvatarUrl = account['avatarUrl'];
+        this.Email = account['email'];
+        this.FName = account['firstName'];
+        this.LName = account['lastName'];
+        this.MName = account['middleName'];
+        this.BirthDate = account['birthDate'];
         setLoggedIn(true);
       },
       LogOutAccout: function() {
         setLoggedIn(false);
       },
-      AccountId: '',
+      // AccountId: '',
       UserName: '',
       AvatarUrl: '',
       Email: '',
