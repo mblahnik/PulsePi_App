@@ -21,6 +21,7 @@ function setTopNavLoggedIn() {
     $('#namePlate').text(
       User.getInstance().FName + ' ' + User.getInstance().LName
     );
+    $('#userAvatar').attr('src', User.getInstance().AvatarUrl);
     //Add Listener To LogOut Button
     $('#logout-item').click(function() {
       User.getInstance().LogOutAccout();

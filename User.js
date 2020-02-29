@@ -22,7 +22,6 @@ var User = (function() {
 
     return {
       // Public methods and variables
-      UserName: 'TEST',
       addObserver: function(fn) {
         observers.push(fn);
       },
@@ -32,7 +31,7 @@ var User = (function() {
       LogInAccount: function(account) {
         this.AccountId = account['AccountId'];
         this.UserName = account['UserName'];
-        this.AvatarURL = account['AvatarUrl'];
+        this.AvatarUrl = account['AvatarUrl'];
         this.Email = account['Email'];
         this.FName = account['FName'];
         this.LName = account['LName'];
