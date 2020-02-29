@@ -18,7 +18,7 @@ var User = (function() {
     }
 
     //private variables
-    let loggedIn = false;
+    let loggedIn = true;
     let avatarURL = "";
 
     return {
