@@ -19,7 +19,6 @@ var User = (function() {
 
     //private variables
     let loggedIn = false;
-    let avatarURL = '';
 
     return {
       // Public methods and variables
@@ -33,6 +32,7 @@ var User = (function() {
       LogInAccount: function(account) {
         this.AccountId = account['AccountId'];
         this.UserName = account['UserName'];
+        this.AvatarURL = account['AvatarUrl'];
         this.Email = account['Email'];
         this.FName = account['FName'];
         this.LName = account['LName'];
@@ -45,6 +45,7 @@ var User = (function() {
       },
       AccountId: '',
       UserName: '',
+      AvatarUrl: '',
       Email: '',
       FName: '',
       LName: '',
