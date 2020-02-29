@@ -1,18 +1,24 @@
 const account = require('./User');
 
 account.getInstance().addObserver(() => {
-  account.getInstance().isLoggedIn() ? setLinksLoggedIn() : setLinksLoggedOut();
+  //User just logged in
+  if (account.getInstance().isLoggedIn()) {
+    setLinksLoggedIn();
+  }
+  //User just logged out
+  else {
+    setLinksLoggedOut();
+    setComponentToDashBoard();
+  }
 });
 
 //Reset the Component locations on resize.
 $(window).on('resize', setWindowSizes);
 
-//Set default view to Dashboard
+//Set startup view to Dashboard
 $(document).ready(function() {
   setLinksLoggedOut();
-  $.get('./Component/DashBoardComponent.html', function(data) {
-    $('#root').html(data);
-  });
+  setComponentToDashBoard();
   setWindowSizes();
 });
 
@@ -96,3 +102,9 @@ $('#dashboardLink').click(function() {
     setNavLinkActive('dashboardLink');
   });
 });
+
+function setComponentToDashBoard() {
+  $.get('./Component/DashBoardComponent.html', function(data) {
+    $('#root').html(data);
+  });
+}
