@@ -17,8 +17,13 @@ User.getInstance().addObserver(() => {
 function setTopNavLoggedIn() {
   $.get('UserNav-LoggedIn.html', function(data) {
     $('#UserDropDown').html(data);
+    //Set the name next to the Avatar to the Users Name
+    $('#namePlate').text(
+      User.getInstance().FName + ' ' + User.getInstance().LName
+    );
+    //Add Listener To LogOut Button
     $('#logout-item').click(function() {
-      console.log('logout Clicked');
+      User.getInstance().LogOutAccout();
     });
   });
 }
