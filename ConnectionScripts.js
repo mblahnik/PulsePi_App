@@ -1,8 +1,8 @@
-const ClientSocket = require("./ArduinoConnction/ClientSocket");
-const NetworkScanner = require("./ArduinoConnction/NetworkScanner");
-const $ = require("jquery");
+const ClientSocket = require('./ArduinoConnction/ClientSocket');
+const NetworkScanner = require('./ArduinoConnction/NetworkScanner');
+//const $ = require("jquery");
 const SERVER_PORT = 23;
-const arduinoMac = "a4:cf:12:85:61:10";
+const arduinoMac = 'a4:cf:12:85:61:10';
 
 $(document).ready(function() {
   setUpConnectionForm();
@@ -12,33 +12,33 @@ $(document).ready(function() {
 ClientSocket.getInstance().addObserver(function() {
   if (ClientSocket.getInstance().IsConnected()) {
     setUpDisconnectForm();
-    $("#material-icons").html(`wifi`);
-    $("#material-icons").toggleClass("greenIcon");
+    $('#material-icons').html(`wifi`);
+    $('#material-icons').toggleClass('greenIcon');
   } else {
     setUpConnectionForm();
-    $("#material-icons").html(`wifi_off`);
-    $("#material-icons").toggleClass("greenIcon");
+    $('#material-icons').html(`wifi_off`);
+    $('#material-icons').toggleClass('greenIcon');
   }
 });
 
 //Set the dropdown to the Disconnect from device form.
 function setUpDisconnectForm() {
-  $.get("disconnect-form.html", function(data) {
-    $("#connection-dropdown").html(data);
+  $.get('disconnect-form.html', function(data) {
+    $('#connection-dropdown').html(data);
     addDisconnectListener();
   });
 }
 
 function addDisconnectListener() {
-  $("#disconnect").click(function() {
+  $('#disconnect').click(function() {
     ClientSocket.getInstance().disconnect();
   });
 }
 
 //Set the dropdown to the Connect to device form
 function setUpConnectionForm() {
-  $.get("connection-form.html", function(data) {
-    $("#connection-dropdown").html(data);
+  $.get('connection-form.html', function(data) {
+    $('#connection-dropdown').html(data);
     addConnectListen();
     addScanListener();
   });
@@ -46,15 +46,15 @@ function setUpConnectionForm() {
 
 //Add listen to the connect button
 function addConnectListen() {
-  $("#connect-btn").click(function() {
-    let ip = $("#ipInput").val();
+  $('#connect-btn').click(function() {
+    let ip = $('#ipInput').val();
     DeviceFound(ip);
   });
 }
 
 //Add listener to auto scan button
 function addScanListener() {
-  $("#scan-btn").click(function() {
+  $('#scan-btn').click(function() {
     const scan = new NetworkScanner();
     StartScanning();
     scan
@@ -77,8 +77,8 @@ function addScanListener() {
 
 /*Hook for start of scan*/
 function StartScanning() {
-  $("#scan-status").html("");
-  $("#scan-btn").html(`<span
+  $('#scan-status').html('');
+  $('#scan-btn').html(`<span
                     class="spinner-border spinner-border-sm"
                     role="status"
                     aria-hidden="true"
@@ -96,10 +96,10 @@ function DeviceFound(ip) {
 
 /*What to do when the device is not found via auto scan*/
 function DeviceNotFound() {
-  $("#scan-status").html(`<span class="text-warning">Device not found</span>`);
+  $('#scan-status').html(`<span class="text-warning">Device not found</span>`);
 }
 
 /*What to do when the autoscan is finished*/
 function DoneScanning() {
-  $("#scan-btn").html(`Scan for device`);
+  $('#scan-btn').html(`Scan for device`);
 }
