@@ -18,21 +18,38 @@ var User = (function() {
     }
 
     //private variables
-    let loggedIn = true;
-    let avatarURL = "";
+    let loggedIn = false;
+    let avatarURL = '';
 
     return {
       // Public methods and variables
-      UserName: "TEST",
+      UserName: 'TEST',
       addObserver: function(fn) {
         observers.push(fn);
       },
       isLoggedIn: function() {
         return loggedIn;
       },
-      getAvatarUrl: function() {
-        return avatarURL;
-      }
+      LogInAccount: function(account) {
+        this.AccountId = account['AccountId'];
+        this.UserName = account['UserName'];
+        this.Email = account['Email'];
+        this.FName = account['FName'];
+        this.LName = account['LName'];
+        this.MName = account['MName'];
+        this.BirthDate = account['BirthDate'];
+        setLoggedIn(true);
+      },
+      LogOutAccout: function() {
+        setLoggedIn(false);
+      },
+      AccountId: '',
+      UserName: '',
+      Email: '',
+      FName: '',
+      LName: '',
+      MName: '',
+      BirthDate: ''
     };
   }
 

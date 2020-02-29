@@ -1,8 +1,11 @@
-const User = require("./User");
+const User = require('./User');
 
 //id = UserDropDown
 
 $(document).ready(function() {
+  $.get('Login-modal.html', function(data) {
+    $('#modalContainer').html(data);
+  });
   setProperNav();
 });
 
@@ -12,20 +15,17 @@ User.getInstance().addObserver(() => {
 });
 
 function setTopNavLoggedIn() {
-  $.get("UserNav-LoggedIn.html", function(data) {
-    $("#UserDropDown").html(data);
-    $("#logout-item").click(function() {
-      console.log("logout Clicked");
+  $.get('UserNav-LoggedIn.html', function(data) {
+    $('#UserDropDown').html(data);
+    $('#logout-item').click(function() {
+      console.log('logout Clicked');
     });
   });
 }
 
 function setTopNavLoggedOut() {
-  $.get("UserNav-LoggedOut.html", function(data) {
-    $("#UserDropDown").html(data);
-    $("#login-item").click(function() {
-      console.log("login clicked");
-    });
+  $.get('UserNav-LoggedOut.html', function(data) {
+    $('#UserDropDown').html(data);
   });
 }
 
