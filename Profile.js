@@ -11,19 +11,19 @@ User.getInstance().addObserver(() => {
 if (User.getInstance().isLoggedIn()) setUpProfilePage();
 else clearForm();
 
-$("#avatarChange").click(function() {
+$('#avatarChange').click(function() {
   addAvatarsToModal();
-  $("#avatarSelectModal").modal("show");
+  $('#avatarSelectModal').modal('show');
 });
 
 function addAvatarsToModal() {
-  let directoryPath = path.join(__dirname, "assets/img/avatars");
+  let directoryPath = path.join(__dirname, 'assets/img/avatars');
   fs.readdir(directoryPath, function(err, files) {
     files.forEach((x, i) => {
-      if (!x.includes(".D"))
-        $("#avatarList").append(`<div class="col-sm"> 
+      if (!x.includes('.D'))
+        $('#avatarList').append(`<div class="col-sm"> 
           <div class="card-body text-center shadow">
-          <img src="${"assets/img/avatars/" +
+          <img src="${'assets/img/avatars/' +
             x}" id="ProfilePic" class="rounded-circle mb-3 mt-4" width="100" height="100">
           <div class="mb-3">
           <button class="btn btn-primary btn-sm" type="button" id="${i}">Select</button>
@@ -32,8 +32,9 @@ function addAvatarsToModal() {
           </div> 
           <script> 
           $('#${i}').click(function(){
-            User.getInstance().setAvatar("${"assets/img/avatars/" + x}")
+            User.getInstance().setAvatar("${'assets/img/avatars/' + x}")
             $("#avatarSelectModal").modal("hide");
+            $('#avatarList').html('')
           });
           </script>`);
     });
@@ -46,21 +47,21 @@ function setUpProfilePage() {
 }
 
 function setProfilePicture() {
-  $("#ProfilePic").attr("src", User.getInstance().AvatarUrl);
+  $('#ProfilePic').attr('src', User.getInstance().AvatarUrl);
 }
 
 function setFormValuesToUser() {
-  $("#ProfileUsername").val(User.getInstance().UserName);
-  $("#ProfileEmail").val(User.getInstance().Email);
-  $("#ProfileFirst").val(User.getInstance().FName);
-  $("#ProfileMiddle").val(User.getInstance().MName);
-  $("#ProfileLast").val(User.getInstance().LName);
+  $('#ProfileUsername').val(User.getInstance().UserName);
+  $('#ProfileEmail').val(User.getInstance().Email);
+  $('#ProfileFirst').val(User.getInstance().FName);
+  $('#ProfileMiddle').val(User.getInstance().MName);
+  $('#ProfileLast').val(User.getInstance().LName);
 }
 
 function clearForm() {
-  $("#ProfileUsername").val("");
-  $("#ProfileEmail").val("");
-  $("#ProfileFirst").val("");
-  $("#ProfileMiddle").val("");
-  $("#ProfileLast").val("");
+  $('#ProfileUsername').val('');
+  $('#ProfileEmail').val('');
+  $('#ProfileFirst').val('');
+  $('#ProfileMiddle').val('');
+  $('#ProfileLast').val('');
 }
