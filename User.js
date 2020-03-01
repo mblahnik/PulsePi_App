@@ -29,27 +29,29 @@ var User = (function() {
         return loggedIn;
       },
       LogInAccount: function(account) {
-        //this.AccountId = account['AccountId'];
-        this.UserName = account['username'];
-        this.AvatarUrl = account['avatarUrl'];
-        this.Email = account['email'];
-        this.FName = account['firstName'];
-        this.LName = account['lastName'];
-        this.MName = account['middleName'];
-        this.BirthDate = account['birthDate'];
+        this.UserName = account["username"];
+        this.AvatarUrl = account["avatarUrl"];
+        this.Email = account["email"];
+        this.FName = account["firstName"];
+        this.LName = account["lastName"];
+        this.MName = account["middleName"];
+        this.BirthDate = account["birthDate"];
         setLoggedIn(true);
       },
       LogOutAccout: function() {
         setLoggedIn(false);
       },
-      // AccountId: '',
-      UserName: '',
-      AvatarUrl: '',
-      Email: '',
-      FName: '',
-      LName: '',
-      MName: '',
-      BirthDate: ''
+      setAvatar: function(url) {
+        this.AvatarUrl = url;
+        notifyObservers();
+      },
+      UserName: "",
+      AvatarUrl: "",
+      Email: "",
+      FName: "",
+      LName: "",
+      MName: "",
+      BirthDate: ""
     };
   }
 
