@@ -30,7 +30,7 @@ var User = (function() {
       },
       LogInAccount: function(account) {
         //this.AccountId = account['AccountId'];
-        this.UserName = account['userName'];
+        this.UserName = account['username'];
         this.AvatarUrl = account['avatarUrl'];
         this.Email = account['email'];
         this.FName = account['firstName'];
