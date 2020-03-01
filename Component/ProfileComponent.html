@@ -3,8 +3,8 @@
     <div class="row mb-3">
         <div class="col-lg-4">
             <div class="card mb-3">
-                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="assets/img/avatars/avatarG.jpeg" width="160" height="160">
-                    <div class="mb-3"><button class="btn btn-primary btn-sm" type="button">Change Photo</button></div>
+                <div class="card-body text-center shadow"><img id="ProfilePic" class="rounded-circle mb-3 mt-4" width="160" height="160">
+                    <div class="mb-3"><button class="btn btn-primary btn-sm" type="button" id="avatarChange">Change Photo</button></div>
                 </div>
             </div>
         </div>
@@ -51,21 +51,21 @@
                             <form>
                                 <div class="form-row">
                                     <div class="col">
-                                        <div class="form-group"><label for="username"><strong>Username</strong></label><input class="form-control" type="text" placeholder="user.name" name="username"></div>
+                                        <div class="form-group"><label for="username"><strong>Username</strong></label><input id="ProfileUsername" class="form-control" type="text" placeholder="user.name" name="username"></div>
                                     </div>
                                     <div class="col">
-                                        <div class="form-group"><label for="email"><strong>Email Address</strong></label><input class="form-control" type="email" placeholder="user@example.com" name="email"></div>
+                                        <div class="form-group"><label for="email"><strong>Email Address</strong></label><input id="ProfileEmail" class="form-control" type="email" placeholder="user@example.com" name="email"></div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col">
-                                        <div class="form-group"><label for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" placeholder="John" name="first_name"></div>
+                                        <div class="form-group"><label for="first_name"><strong>First Name</strong></label><input id="ProfileFirst" class="form-control" type="text" placeholder="John" name="first_name"></div>
                                     </div>
                                     <div class="col">
-                                        <div class="form-group"><label for="last_name"><strong>Middle Name</strong></label><input class="form-control" type="text" placeholder="George" name="last_name"></div>
+                                        <div class="form-group"><label for="last_name"><strong>Middle Name</strong></label><input id="ProfileLast" class="form-control" type="text" placeholder="George" name="last_name"></div>
                                     </div>
                                     <div class="col">
-                                        <div class="form-group"><label for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" placeholder="Doe" name="last_name"></div>
+                                        <div class="form-group"><label for="last_name"><strong>Last Name</strong></label><input id="ProfileMiddle" class="form-control" type="text" placeholder="Doe" name="last_name"></div>
                                     </div>
                                 </div>
                             </form>
@@ -95,3 +95,28 @@
 </div>
 </div>
 </div>
+
+<div class="modal fade" id="avatarSelectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Select A Profile Pictue</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+          <div id="avatarList"  class="row">
+
+          </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="Profile.js"></script>

@@ -1,5 +1,3 @@
-const User = require('./User');
-
 //id = UserDropDown
 
 $(document).ready(function() {

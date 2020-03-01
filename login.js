@@ -1,28 +1,33 @@
-//const loginURL = 'https://pulsepi.azurewebsites.net/api/account/login'
-const loginURL = 'fakeAccount.json';
-const user = require('./User');
+const loginURL = 'https://pulsepi.azurewebsites.net/api/account/login';
+//const loginURL = 'fakeAccount.json';
 
 $(document).ready(function() {});
 
 $('#login').click(function() {
   setSpinner();
   removeErrorMessage();
-  //Simulate latency until endpoint is up and running
-  setTimeout(function() {
-    $.ajax({
-      url: loginURL,
-      type: 'GET',
-      success: function(data) {
-        user.getInstance().LogInAccount(data);
-        $('#loginModal').modal('hide');
-        removeSpinner();
-      },
-      error: function(data) {
-        showErrorMessage();
-        removeSpinner();
-      }
-    });
-  }, 3000);
+
+  $.ajax({
+    url: loginURL,
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      username: $('#usernameInput').val(),
+      password: $('#passwordInput').val()
+    }),
+    success: function(data) {
+      User.getInstance().LogInAccount(data);
+      $('#loginModal').modal('hide');
+      removeSpinner();
+      $('#usernameInput').val('');
+      $('#passwordInput').val('');
+    },
+    error: function(data) {
+      showErrorMessage();
+      removeSpinner();
+    }
+  });
 });
 
 function showErrorMessage() {
