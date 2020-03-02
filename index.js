@@ -6,7 +6,7 @@ function createWindow() {
     width: 800,
     height: 600,
     icon: __dirname + "./assets/img/icon/heart.png", //Set the icon for the system tray
-    //  frame: false,
+    frame: false,
     webPreferences: {
       nodeIntegration: true
     }

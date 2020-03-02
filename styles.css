@@ -7,10 +7,6 @@
   color: rgb(255, 105, 180);
 }
 
-#titlebar {
-  z-index: 3;
-}
-
 body {
   overflow: hidden;
 }
@@ -34,6 +30,49 @@ body {
   margin: 0em;
   overflow-x: hidden;
   overflow-y: scroll !important;
+}
+
+#titlebar {
+  -webkit-app-region: drag;
+  z-index: 4;
+  height: 25px;
+}
+
+#navbrand {
+  position: relative;
+  bottom: 15px;
+}
+
+#titlebar-btns {
+  -webkit-app-region: no-drag;
+  position: relative;
+  float: right;
+  left: 20px;
+  bottom: 15px;
+  padding: 5px;
+}
+.title-btn {
+}
+
+.win-btn {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  text-align: center;
+  height: 25px;
+  width: 45px;
+  background-color: transparent;
+}
+
+.win-btn:hover {
+  background-color: teal;
+}
+
+#min-btn {
+}
+#max-btn {
+}
+#close-btn:hover {
+  background-color: red !important;
 }
 
 /* width */
