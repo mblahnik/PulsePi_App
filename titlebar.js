@@ -1,10 +1,10 @@
 const { remote, ipcRenderer } = require("electron");
 
-$(document).ready(function() {
-  if (remote.getCurrentWindow().isMaximized())
-    $("#icn").addClass("fa fa-window-restore");
-  else $("#icn").addClass("fa fa-window-maximize");
+if (remote.getCurrentWindow().isMaximized())
+  $("#icn").addClass("fa fa-window-restore");
+else $("#icn").addClass("fa fa-window-maximize");
 
+$(document).ready(function() {
   $("#min-btn").click(function() {
     remote.getCurrentWindow().minimize();
   });
