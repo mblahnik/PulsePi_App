@@ -83,14 +83,14 @@ function setWindowSizes() {
     "margin-left": $("#side").width() + "px"
   });
   $("#content").css({
-    "margin-top": $("#top").height() + 40 + "px" //An arbitrary number. Increace it to move the contents down.
+    "margin-top": $("#top").height() + 45 + "px" //An arbitrary number. Increace it to move the contents down.
   });
-  $("#top").css({
-    top: $("#titlebar").height() + 15 + "px"
-  });
-  $("#side").css({
-    top: $("#titlebar").height() + 15 + "px"
-  });
+  //$("#top").css({
+  //  top: $("#titlebar").height() + 15 + "px"
+  //});
+  //$("#side").css({
+  //  top: $("#titlebar").height() + 15 + "px"
+  //});
 }
 
 /**

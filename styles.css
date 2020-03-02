@@ -23,10 +23,12 @@ body {
 #side {
   position: fixed;
   z-index: 2;
+  top: 30px;
 }
 
 #top {
   z-index: 1;
+  top: 30px;
 }
 
 #root {
@@ -39,23 +41,26 @@ body {
 #titlebar {
   -webkit-app-region: drag;
   z-index: 4;
-  height: 25px;
+  height: 30px;
 }
 
 #navbrand {
   position: relative;
-  bottom: 15px;
+  bottom: 18px;
+}
+
+.titlebar-text {
+  position: relative;
+  top: 6px;
 }
 
 #titlebar-btns {
   -webkit-app-region: no-drag;
   position: relative;
   float: right;
-  left: 20px;
-  bottom: 15px;
+  left: 21px;
   padding: 5px;
-}
-.title-btn {
+  bottom: 13px;
 }
 
 .win-btn {
@@ -63,7 +68,7 @@ body {
   display: inline-block !important;
   vertical-align: middle !important;
   text-align: center;
-  height: 25px;
+  height: 30px;
   width: 45px;
   background-color: transparent;
   -webkit-touch-callout: none; /* iOS Safari */
@@ -80,12 +85,19 @@ body {
   color: white;
 }
 
-.min-btn {
+.min-btn-icon {
   position: relative !important;
-  bottom: 8px;
+  bottom: 5px;
 }
-#max-btn {
+.max-btn-icon {
+  position: relative !important;
+  top: 4px;
 }
+.close-btn-icon {
+  position: relative !important;
+  top: 2px;
+}
+
 #close-btn:hover {
   background-color: red !important;
 }
