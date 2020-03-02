@@ -2,13 +2,13 @@
   color: green;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 /*css for side bar */
 .navbar-brand.d-flex.justify-content-center.align-items-center.sidebar-brand.m-0 {
   color: rgb(255, 105, 180);
-}
-
-#titlebar {
-  z-index: 3;
 }
 
 body {
@@ -23,10 +23,12 @@ body {
 #side {
   position: fixed;
   z-index: 2;
+  top: 30px;
 }
 
 #top {
   z-index: 1;
+  top: 30px;
 }
 
 #root {
@@ -34,6 +36,70 @@ body {
   margin: 0em;
   overflow-x: hidden;
   overflow-y: scroll !important;
+}
+
+#titlebar {
+  -webkit-app-region: drag;
+  z-index: 4;
+  height: 30px;
+}
+
+#navbrand {
+  position: relative;
+  bottom: 18px;
+}
+
+.titlebar-text {
+  position: relative;
+  top: 6px;
+}
+
+#titlebar-btns {
+  -webkit-app-region: no-drag;
+  position: relative;
+  float: right;
+  left: 21px;
+  padding: 5px;
+  bottom: 13px;
+}
+
+.win-btn {
+  cursor: default;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  text-align: center;
+  height: 30px;
+  width: 45px;
+  background-color: transparent;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Opera and Firefox */
+}
+
+.win-btn:hover {
+  background-color: teal;
+  color: white;
+}
+
+.min-btn-icon {
+  position: relative !important;
+  bottom: 5px;
+}
+.max-btn-icon {
+  position: relative !important;
+  top: 4px;
+}
+.close-btn-icon {
+  position: relative !important;
+  top: 2px;
+}
+
+#close-btn:hover {
+  background-color: red !important;
 }
 
 /* width */
