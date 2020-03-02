@@ -76,7 +76,9 @@ body {
   color: white;
 }
 
-#min-btn {
+.min-btn {
+  position: relative !important;
+  bottom: 8px;
 }
 #max-btn {
 }
