@@ -36,7 +36,7 @@ function addProfileLink() {
   if (!$("#profileNav").length) {
     $("#accordionSidebar")
       .append(`<li class="nav-item" role="presentation" id='profileNav'>
-             <a class="nav-link" id="profileLink">
+             <a class="nav-link pointer" id="profileLink">
              <i class="fas fa-user"></i><span>Profile</span></a>
              </li>`);
     $("#profileLink").click(function() {
@@ -53,7 +53,7 @@ function addLoginLink() {
     $("#profileNav").remove();
     $("#accordionSidebar")
       .append(`<li class="nav-item" role="presentation" id='loginNav'>
-             <a class="nav-link"  data-toggle="modal" data-target="#loginModal">
+             <a class="nav-link pointer"  data-toggle="modal" data-target="#loginModal">
              <i class="far fa-user-circle"></i><span>Login</span></a>
              </li>`);
   }
@@ -63,7 +63,7 @@ function addHistoryLink() {
   if (!$("#historyNav").length) {
     $("#accordionSidebar")
       .append(`<li class="nav-item" role="presentation" id="historyNav">
-             <a class="nav-link" id="historyLink">
+             <a class="nav-link pointer" id="historyLink">
              <i class="fas fa-table"></i><span>History</span></a>
              </li>`);
 

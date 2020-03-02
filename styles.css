@@ -2,6 +2,10 @@
   color: green;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 /*css for side bar */
 .navbar-brand.d-flex.justify-content-center.align-items-center.sidebar-brand.m-0 {
   color: rgb(255, 105, 180);
