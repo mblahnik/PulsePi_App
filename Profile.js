@@ -11,6 +11,10 @@ User.getInstance().addObserver(() => {
 if (User.getInstance().isLoggedIn()) setUpProfilePage();
 else clearForm();
 
+$("#avatarSelectModal").on("hidden.bs.modal", function() {
+  $("#avatarList").html("");
+});
+
 $("#avatarChange").click(function() {
   addAvatarsToModal();
   $("#avatarSelectModal").modal("show");
@@ -20,7 +24,7 @@ function addAvatarsToModal() {
   let directoryPath = path.join(__dirname, "assets/img/avatars");
   fs.readdir(directoryPath, function(err, files) {
     files.forEach((x, i) => {
-      if (x.includes(".jpeg"))
+      if (x.includes(".jpg") || x.includes(".png"))
         $("#avatarList").append(`<div class="col-md"> 
           <div class="card-body text-center shadow">
           <img src="${"assets/img/avatars/" +
