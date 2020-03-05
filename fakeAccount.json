@@ -1,10 +1,10 @@
 {
-  "AccountId": "1",
-  "AvatarUrl": "assets/img/avatars/avatarG.jpeg",
+  "accountId": "1",
+  "avatarUrl": "assets/img/avatars/elsa.jpg",
   "UserName": "mukul",
-  "Email": "mukul@uwm.edu",
-  "FName": "Mukul",
-  "LName": "Goyal",
-  "MName": "NMI",
-  "BirthDate": "06/01/1985"
+  "email": "mukul@uwm.edu",
+  "firstname": "Mukul",
+  "lastname": "Goyal",
+  "middlename": "NMI",
+  "birthdate": "06/01/1985"
 }
