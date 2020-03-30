@@ -1,27 +1,31 @@
-const loginURL = "https://pulsepi.azurewebsites.net/api/account/login";
+const loginURL = 'https://pulsepi.azurewebsites.net/api/account/login';
 //const loginURL = "fakeAccount.json";
 
 $(document).ready(function() {});
 
-$("#login").click(function() {
+$('#CreateAccountLink').click(function() {
+  require('./CreateAccount').OpenWindow();
+});
+
+$('#login').click(function() {
   setSpinner();
   removeErrorMessage();
 
   $.ajax({
     url: loginURL,
-    type: "POST",
-    dataType: "json",
-    contentType: "application/json",
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
     data: JSON.stringify({
-      username: $("#usernameInput").val(),
-      password: $("#passwordInput").val()
+      username: $('#usernameInput').val(),
+      password: $('#passwordInput').val()
     }),
     success: function(data) {
       User.getInstance().LogInAccount(data);
-      $("#loginModal").modal("hide");
+      $('#loginModal').modal('hide');
       removeSpinner();
-      $("#usernameInput").val("");
-      $("#passwordInput").val("");
+      $('#usernameInput').val('');
+      $('#passwordInput').val('');
     },
     error: function(data) {
       showErrorMessage();
@@ -31,17 +35,17 @@ $("#login").click(function() {
 });
 
 function showErrorMessage() {
-  $("#error").html("Invalid Username or password");
+  $('#error').html('Invalid Username or password');
 }
 function removeErrorMessage() {
-  $("#error").html("");
+  $('#error').html('');
 }
 function setSpinner() {
-  $("#login").html(`<div class="spinner-border text-primary" role="status">
+  $('#login').html(`<div class="spinner-border text-primary" role="status">
   <span class="sr-only">Loading...</span>
 </div>`);
 }
 
 function removeSpinner() {
-  $("#login").html(`LogIn`);
+  $('#login').html(`LogIn`);
 }
