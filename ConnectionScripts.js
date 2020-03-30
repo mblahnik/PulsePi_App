@@ -12,12 +12,12 @@ $(document).ready(function() {
 ClientSocket.getInstance().addObserver(function() {
   if (ClientSocket.getInstance().IsConnected()) {
     setUpDisconnectForm();
-    $('#material-icons').html(`wifi`);
-    $('#material-icons').toggleClass('greenIcon');
+    $('.connect-icon').html(`wifi`);
+    $('.connect-icon').toggleClass('greenIcon');
   } else {
     setUpConnectionForm();
-    $('#material-icons').html(`wifi_off`);
-    $('#material-icons').toggleClass('greenIcon');
+    $('.connect-icon').html(`wifi_off`);
+    $('.connect-icon').toggleClass('greenIcon');
   }
 });
 

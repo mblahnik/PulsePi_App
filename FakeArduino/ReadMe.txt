@@ -1,0 +1,2 @@
+In order to run this java code please download the Java Extensions Pack in VS CODE. It should ask if you want to download it when you try to open a .java file.
+This extention should place a little run button right next to the main method.
