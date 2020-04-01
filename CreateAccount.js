@@ -56,6 +56,15 @@ const verifyForm = function() {
 
 const CreateAccountWindow = {
   remote: require('electron'),
+  ShowLoading: function() {
+    $('#SubmitCreateAccountBtn')
+      .html(`<div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Please Wait...</span>
+  </div>`);
+  },
+  RemoveSpiner: function() {
+    $('#SubmitCreateAccountBtn').html(`Register Account`);
+  },
   OpenWindow: function() {
     const win = new remote.BrowserWindow({
       width: 800,
@@ -68,7 +77,7 @@ const CreateAccountWindow = {
     });
     win.loadFile('Register.html');
     win.setMenu(null);
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
   },
   setFormValidation: function() {
     $('form').change(function(event) {
@@ -80,7 +89,8 @@ const CreateAccountWindow = {
   },
   setSubmitListener: function() {
     $('#SubmitCreateAccountBtn').click(function() {
-      if (verifyForm())
+      if (verifyForm()) {
+        CreateAccountWindow.ShowLoading();
         $.ajax({
           url: CreateAccountURL,
           type: 'POST',
@@ -94,12 +104,17 @@ const CreateAccountWindow = {
             email: $('#CAInputEmail').val()
           }),
           success: function(data) {
-            console.log(data);
+            CreateAccountWindow.RemoveSpiner();
+            $('#root').html(`<h1>Account Successfully Created</h1>
+                            <strong>Username: ${$(
+                              '#CAUsernameInput'
+                            ).val()}</strong>`);
           },
           error: function(data) {
-            console.log(data);
+            CreateAccountWindow.RemoveSpiner();
           }
         });
+      }
     });
   },
   init: function() {
