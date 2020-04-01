@@ -31,7 +31,28 @@
                 <div class="text-center">
                   <h4 class="text-dark mb-4">Create an Account!</h4>
                 </div>
-                <form class="user">
+                <form class="needs-validation">
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <input
+                        class="form-control form-control-user"
+                        type="text"
+                        id="CAUsernameInput"
+                        placeholder="Username"
+                        name="first_name"
+                      />
+                    </div>
+                    <div class="col-sm-6">
+                      <input
+                        class="form-control form-control-user"
+                        type="email"
+                        id="CAInputEmail"
+                        aria-describedby="emailHelp"
+                        placeholder="Email Address"
+                        name="email"
+                      />
+                    </div>
+                  </div>
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                       <input
@@ -52,22 +73,12 @@
                       />
                     </div>
                   </div>
-                  <div class="form-group">
-                    <input
-                      class="form-control form-control-user"
-                      type="email"
-                      id="CAInputEmail"
-                      aria-describedby="emailHelp"
-                      placeholder="Email Address"
-                      name="email"
-                    />
-                  </div>
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                       <input
                         class="form-control form-control-user"
                         type="password"
-                        id="examplePasswordInput"
+                        id="CAPasswordInput"
                         placeholder="Password"
                         name="password"
                       />
@@ -76,7 +87,7 @@
                       <input
                         class="form-control form-control-user"
                         type="password"
-                        id="CAPasswordInput"
+                        id="CAPasswordRepeat"
                         placeholder="Repeat Password"
                         name="password_repeat"
                       />
@@ -90,17 +101,6 @@
                     Register Account
                   </button>
                   <hr />
-                  <!-- <a
-                    class="btn btn-primary btn-block text-white btn-google btn-user"
-                    role="button"
-                    ><i class="fab fa-google"></i>&nbsp; Register with Google</a
-                  ><a
-                    class="btn btn-primary btn-block text-white btn-facebook btn-user"
-                    role="button"
-                    ><i class="fab fa-facebook-f"></i>&nbsp; Register with
-                    Facebook</a
-                  > -->
-                  <hr />
                 </form>
               </div>
             </div>
@@ -108,6 +108,7 @@
         </div>
       </div>
     </div>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
