@@ -21,13 +21,13 @@ const required = function(formControlId) {
 
 const mustMatch = function(formControlId) {
   if ($(formControlId).val() && $('#CAPasswordInput').val()) {
-    if ($(formControlId).val() !== $('#CAPasswordInput').val())
+    if ($(formControlId).val() !== $('#CAPasswordInput').val()) {
       $(formControlId).addClass('is-invalid');
-    if (!$(formControlId).siblings('.match').length)
-      $(formControlId).after(
-        `<div class="text-danger match" id="1${formControlId}">Passwords Must Match</div>`
-      );
-    else {
+      if (!$(formControlId).siblings('.match').length)
+        $(formControlId).after(
+          `<div class="text-danger match" id="1${formControlId}">Passwords Must Match</div>`
+        );
+    } else {
       $(formControlId).removeClass('is-invalid');
       if ($(formControlId).siblings('.match').length)
         $(formControlId)
@@ -54,6 +54,14 @@ const verifyForm = function() {
   else return true;
 };
 
+const showErrorMessage = function() {
+  $('#errorMessage').html(`Error Creating Account`);
+};
+
+const removeErrorMessage = function() {
+  $('#errorMessage').html(``);
+};
+
 const CreateAccountWindow = {
   remote: require('electron'),
   ShowLoading: function() {
@@ -77,7 +85,7 @@ const CreateAccountWindow = {
     });
     win.loadFile('Register.html');
     win.setMenu(null);
-    // win.webContents.openDevTools();
+    win.webContents.openDevTools();
   },
   setFormValidation: function() {
     $('form').change(function(event) {
@@ -89,6 +97,7 @@ const CreateAccountWindow = {
   },
   setSubmitListener: function() {
     $('#SubmitCreateAccountBtn').click(function() {
+      removeErrorMessage();
       if (verifyForm()) {
         CreateAccountWindow.ShowLoading();
         $.ajax({
@@ -104,6 +113,8 @@ const CreateAccountWindow = {
             email: $('#CAInputEmail').val()
           }),
           success: function(data) {
+            console.log('good');
+            console.log(data);
             CreateAccountWindow.RemoveSpiner();
             $('#root').html(`<h1>Account Successfully Created</h1>
                             <strong>Username: ${$(
@@ -111,6 +122,7 @@ const CreateAccountWindow = {
                             ).val()}</strong>`);
           },
           error: function(data) {
+            showErrorMessage();
             CreateAccountWindow.RemoveSpiner();
           }
         });
