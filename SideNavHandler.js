@@ -30,6 +30,7 @@ function setLinksLoggedIn() {
 function setLinksLoggedOut() {
   $('#profileNav').remove();
   $('#historyNav').remove();
+  $('#exerciseNav').remove();
   addLoginLink();
 }
 
