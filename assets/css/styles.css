@@ -1,0 +1,111 @@
+body {
+    background-color: #112121
+}
+
+h1 {
+    width: auto;
+    height: auto;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(3rem*1.5);
+    text-align: center;
+    margin: 25px 0;
+    border: none;
+    padding: 25px
+}
+
+.letter,
+.text-wrapper {
+    display: inline-block
+}
+
+.font-crafty-girls {
+    font-family: 'Crafty Girls', cursive
+}
+
+.neon-83ff00 {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0);
+    text-shadow: 0 0 3em #83ff00, 0 0 2em #83ff00, 1px 1px 5px #83ff00, 0 0 15px #83ff00, 1px 0 0 #fff, -1px 0 2px rgba(0, 0, 0, .5)
+}
+
+.neon-83ff00:hover {
+    color: #83ff00;
+    text-shadow: 0 0 5em #83ff00, 0 0 3em #83ff00, 0 0 2em #83ff00, 1px 1px 5px #83ff00, 0 0 10px #83ff00, 0 0 25px #83ff00, 0 0 45px #83ff00, 2px 1px 0 #fff, -1px 0 2px rgba(0, 0, 0, .5)
+}
+
+.font-delius-swash-caps {
+    font-family: 'Delius Swash Caps', cursive
+}
+
+.neon-ffffff-ff00de {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0);
+    text-shadow: 0 0 3em #fff, 0 0 2em #fff, 1px 1px 5px #ff00de, 0 0 15px #ff00de, 1px 0 0 #fff, -1px 0 2px rgba(0, 0, 0, .5)
+}
+
+.neon-ffffff-ff00de:hover {
+    color: #fff;
+    text-shadow: 0 0 5em #ff00de, 0 0 3em #ff00de, 0 0 2em #ff00de, 1px 1px 5px #ff00de, 0 0 10px #ff00de, 0 0 25px #ff00de, 0 0 45px #ff00de, 2px 1px 0 #fff, -1px 0 2px rgba(0, 0, 0, .5)
+}
+
+.font-codystar {
+    font-family: Codystar, cursive
+}
+
+.neon-ff0066 {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0);
+    text-shadow: 0 0 3em #f06, 0 0 2em #f06, 1px 1px 5px #f06, 0 0 15px #f06, 1px 0 0 #fff, -1px 0 2px rgba(0, 0, 0, .5)
+}
+
+.neon-ff0066:hover {
+    color: #f06;
+    text-shadow: 0 0 5em #f06, 0 0 3em #f06, 0 0 2em #f06, 1px 1px 5px #f06, 0 0 10px #f06, 0 0 25px #f06, 0 0 45px #f06, 2px 1px 0 #fff, -1px 0 2px rgba(0, 0, 0, .5)
+}
+
+.font-bubbler-one {
+    font-family: 'Bubbler One', sans-serif
+}
+
+.neon-ffff00 {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0);
+    text-shadow: 0 0 3em #ff0, 0 0 2em #ff0, 1px 1px 5px #ff0, 0 0 15px #ff0, 1px 0 0 #fff, -1px 0 2px rgba(0, 0, 0, .5)
+}
+
+.neon-ffff00:hover {
+    color: #ff0;
+    text-shadow: 0 0 5em #ff0, 0 0 3em #ff0, 0 0 2em #ff0, 1px 1px 5px #ff0, 0 0 10px #ff0, 0 0 25px #ff0, 0 0 45px #ff0, 2px 1px 0 #fff, -1px 0 2px rgba(0, 0, 0, .5)
+}
+
+.font-baloo {
+    font-family: Baloo, cursive
+}
+
+.neon-ff3300 {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0);
+    text-shadow: 0 0 3em #f30, 0 0 2em #f30, 1px 1px 5px #f30, 0 0 15px #f30, 1px 0 0 #fff, -1px 0 2px rgba(0, 0, 0, .5)
+}
+
+.neon-ff3300:hover {
+    color: #f30;
+    text-shadow: 0 0 5em #f30, 0 0 3em #f30, 0 0 2em #f30, 1px 1px 5px #f30, 0 0 10px #f30, 0 0 25px #f30, 0 0 45px #f30, 2px 1px 0 #fff, -1px 0 2px rgba(0, 0, 0, .5)
+}
+
+.font-warnes {
+    font-family: Warnes, cursive
+}
+
+.neon-228dff {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0);
+    text-shadow: 0 0 3em #228dff, 0 0 2em #228dff, 1px 1px 5px #228dff, 0 0 15px #228dff, 1px 0 0 #fff, -1px 0 2px rgba(0, 0, 0, .5)
+}
+
+.neon-228dff:hover {
+    color: #228dff;
+    text-shadow: 0 0 5em #228dff, 0 0 3em #228dff, 0 0 2em #228dff, 1px 1px 5px #228dff, 0 0 10px #228dff, 0 0 25px #228dff, 0 0 45px #228dff, 2px 1px 0 #fff, -1px 0 2px rgba(0, 0, 0, .5)
+}
