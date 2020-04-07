@@ -14,7 +14,7 @@ User.getInstance().addObserver(() => {
 $(window).on('resize', setWindowSizes);
 
 //Set startup view to Dashboard
-$(document).ready(function() {
+$(document).ready(function () {
   setLinksLoggedOut();
   setComponentToDashBoard();
   setWindowSizes();
@@ -24,7 +24,6 @@ function setLinksLoggedIn() {
   $('#loginNav').remove();
   addHistoryLink();
   addProfileLink();
-  addExerciseLink();
 }
 
 function setLinksLoggedOut() {
@@ -32,6 +31,7 @@ function setLinksLoggedOut() {
   $('#historyNav').remove();
   $('#exerciseNav').remove();
   addLoginLink();
+  addExerciseLink();
 }
 
 function addExerciseLink() {
@@ -39,10 +39,10 @@ function addExerciseLink() {
     $('#accordionSidebar')
       .append(`<li class="nav-item" role="presentation" id='exerciseNav'>
              <a class="nav-link pointer" id="exerciseLink">
-             <i class="fas fa-user"></i><span>Excerise</span></a>
+             <i class="fas fa-biking"></i><span>Excerise</span></a>
              </li>`);
-    $('#exerciseLink').click(function() {
-      $.get('./Component/Exercise.html', function(data) {
+    $('#exerciseLink').click(function () {
+      $.get('./Component/Exercise.html', function (data) {
         $('#root').html(data);
         setNavLinkActive('exerciseLink');
       });
@@ -57,8 +57,8 @@ function addProfileLink() {
              <a class="nav-link pointer" id="profileLink">
              <i class="fas fa-user"></i><span>Profile</span></a>
              </li>`);
-    $('#profileLink').click(function() {
-      $.get('./Component/ProfileComponent.html', function(data) {
+    $('#profileLink').click(function () {
+      $.get('./Component/ProfileComponent.html', function (data) {
         $('#root').html(data);
         setNavLinkActive('profileLink');
       });
@@ -85,8 +85,8 @@ function addHistoryLink() {
              <i class="fas fa-table"></i><span>History</span></a>
              </li>`);
 
-    $('#historyLink').click(function() {
-      $.get('./Component/HistoryComponent.html', function(data) {
+    $('#historyLink').click(function () {
+      $.get('./Component/HistoryComponent.html', function (data) {
         $('#root').html(data);
         setNavLinkActive('historyLink');
       });
@@ -98,10 +98,10 @@ function addHistoryLink() {
 function setWindowSizes() {
   $('#content').height($(window).height() - 75); //50 is the height of the Top nav.
   $('#root').css({
-    'margin-left': $('#side').width() + 'px'
+    'margin-left': $('#side').width() + 'px',
   });
   $('#content').css({
-    'margin-top': $('#top').height() + 45 + 'px' //An arbitrary number. Increace it to move the contents down.
+    'margin-top': $('#top').height() + 45 + 'px', //An arbitrary number. Increace it to move the contents down.
   });
   //$("#top").css({
   //  top: $("#titlebar").height() + 15 + "px"
@@ -121,15 +121,15 @@ function setNavLinkActive(id) {
 }
 
 //Add Listener to DashBoard Link
-$('#dashboardLink').click(function() {
-  $.get('./Component/DashBoardComponent.html', function(data) {
+$('#dashboardLink').click(function () {
+  $.get('./Component/DashBoardComponent.html', function (data) {
     $('#root').html(data);
     setNavLinkActive('dashboardLink');
   });
 });
 
 function setComponentToDashBoard() {
-  $.get('./Component/DashBoardComponent.html', function(data) {
+  $.get('./Component/DashBoardComponent.html', function (data) {
     $('#root').html(data);
   });
 }
