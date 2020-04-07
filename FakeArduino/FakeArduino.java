@@ -53,8 +53,8 @@ public class FakeArduino {
         }
 
         private int getHeartBeat() {
-            int maxBPM = 90;
-            int minBPM = 85;
+            int maxBPM = 155;
+            int minBPM = 55;
             Random r = new Random();
             return r.nextInt((maxBPM - minBPM) + 1) + minBPM;
         }
