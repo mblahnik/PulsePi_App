@@ -1,3 +1,4 @@
+const heartRateURL = 'https://pulsepi.azurewebsites.net/api/heartRate/record';
 class ExerciseData {
   constructor(startTime, exerciseType) {
     this.startTime = startTime;
@@ -32,6 +33,25 @@ class ExerciseData {
 const ExercisePage = {
   data: null,
   isRunning: false,
+  saveData: function () {
+    let postData = ExercisePage.data.getBpmDataObj();
+    postData['username'] = User.getInstance().UserName;
+    $.ajax({
+      url: heartRateURL,
+      type: 'POST',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify(postData),
+      success: function (data) {
+        console.log('good Job');
+        console.log(data);
+      },
+      error: function (data) {
+        console.log('bad job');
+        console.log(data);
+      },
+    });
+  },
   stopExercise: function () {
     this.isRunning = false;
     this.data.endTime = Date.now();
@@ -39,7 +59,6 @@ const ExercisePage = {
     $('#CurrentBpm').text(`0 Bpm`);
     $('#MaxBpm').text(`0 Bpm`);
     $('#MinBpm').text(`0 Bpm`);
-    console.log(this.data.getBpmDataObj());
   },
   startExercise: function () {
     this.data = new ExerciseData(Date.now(), $('#MySelect').val());
@@ -57,6 +76,9 @@ const ExercisePage = {
     });
     $('#StopExerciseBtn').click(() => {
       if (ExercisePage.isRunning) ExercisePage.stopExercise();
+    });
+    $('#SaveButton').click(() => {
+      if (ExercisePage.data && !ExercisePage.isRunning) ExercisePage.saveData();
     });
   },
   init: function () {

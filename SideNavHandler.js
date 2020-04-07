@@ -24,6 +24,7 @@ function setLinksLoggedIn() {
   $('#loginNav').remove();
   addHistoryLink();
   addProfileLink();
+  addExerciseLink();
 }
 
 function setLinksLoggedOut() {
@@ -31,7 +32,6 @@ function setLinksLoggedOut() {
   $('#historyNav').remove();
   $('#exerciseNav').remove();
   addLoginLink();
-  addExerciseLink();
 }
 
 function addExerciseLink() {
