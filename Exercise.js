@@ -49,7 +49,6 @@ const ExercisePage = {
       error: function (data) {
         console.log('bad job');
         console.log(data);
-        console.log(postData);
       },
     });
   },
