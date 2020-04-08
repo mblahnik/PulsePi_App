@@ -1,15 +1,14 @@
 const ClientSocket = require('./ArduinoConnction/ClientSocket');
 const NetworkScanner = require('./ArduinoConnction/NetworkScanner');
-//const $ = require("jquery");
 const SERVER_PORT = 23;
 const arduinoMac = 'a4:cf:12:85:61:10';
 
-$(document).ready(function() {
+$(document).ready(function () {
   setUpConnectionForm();
 });
 
 //Set the Icon for the dropdown depending on the Connection state
-ClientSocket.getInstance().addObserver(function() {
+ClientSocket.getInstance().addObserver(function () {
   if (ClientSocket.getInstance().IsConnected()) {
     setUpDisconnectForm();
     $('.connect-icon').html(`wifi`);
@@ -23,21 +22,21 @@ ClientSocket.getInstance().addObserver(function() {
 
 //Set the dropdown to the Disconnect from device form.
 function setUpDisconnectForm() {
-  $.get('disconnect-form.html', function(data) {
+  $.get('disconnect-form.html', function (data) {
     $('#connection-dropdown').html(data);
     addDisconnectListener();
   });
 }
 
 function addDisconnectListener() {
-  $('#disconnect').click(function() {
+  $('#disconnect').click(function () {
     ClientSocket.getInstance().disconnect();
   });
 }
 
 //Set the dropdown to the Connect to device form
 function setUpConnectionForm() {
-  $.get('connection-form.html', function(data) {
+  $.get('connection-form.html', function (data) {
     $('#connection-dropdown').html(data);
     addConnectListen();
     addScanListener();
@@ -46,7 +45,7 @@ function setUpConnectionForm() {
 
 //Add listen to the connect button
 function addConnectListen() {
-  $('#connect-btn').click(function() {
+  $('#connect-btn').click(function () {
     let ip = $('#ipInput').val();
     DeviceFound(ip);
   });
@@ -54,12 +53,12 @@ function addConnectListen() {
 
 //Add listener to auto scan button
 function addScanListener() {
-  $('#scan-btn').click(function() {
+  $('#scan-btn').click(function () {
     const scan = new NetworkScanner();
     StartScanning();
     scan
       .findDeviceByMac(arduinoMac)
-      .then(result => {
+      .then((result) => {
         ip = result;
       })
       .then(() => {
@@ -90,7 +89,7 @@ function StartScanning() {
 /*What to do when the device is found via auto scan*/
 function DeviceFound(ip) {
   const sock = ClientSocket.getInstance();
-  sock.setInputHandler(x => console.log(x.toString()));
+  //sock.setInputHandler((x) => console.log(x.toString()));
   sock.connect(ip, SERVER_PORT);
 }
 
