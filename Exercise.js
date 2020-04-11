@@ -1,4 +1,3 @@
-const heartRateURL = 'https://pulsepi.azurewebsites.net/api/heartRate/record';
 class ExerciseData {
   constructor(startTime, exerciseType) {
     this.startTime = startTime;
@@ -31,23 +30,22 @@ class ExerciseData {
 }
 
 const ExercisePage = {
+  heartRateURL: 'https://pulsepi.azurewebsites.net/api/heartRate/record',
   data: null,
   isRunning: false,
   saveData: function () {
     let postData = ExercisePage.data.getBpmDataObj();
     postData['username'] = User.getInstance().UserName;
     $.ajax({
-      url: heartRateURL,
+      url: ExercisePage.heartRateURL,
       type: 'POST',
-      dataType: 'json',
+      dataType: 'text',
       contentType: 'application/json',
       data: JSON.stringify(postData),
       success: function (data) {
-        console.log('good Job');
         console.log(data);
       },
       error: function (data) {
-        console.log('bad job');
         console.log(data);
       },
     });
@@ -65,11 +63,11 @@ const ExercisePage = {
     this.isRunning = true;
     ClientSocket.getInstance().setInputHandler(function (data) {
       var bpm = parseInt(data.toString());
-      //Constrain HR between 55 and 120 
+      //Constrain HR between 55 and 120
       bpm = Math.min(Math.max(bpm, 55), 120);
-      //Still need to check - sometimes HRs get sent too fast and the numbers get 
-      //combined as something like: "678992", we don't wanna save that 
-      if(bpm < 120) {
+      //Still need to check - sometimes HRs get sent too fast and the numbers get
+      //combined as something like: "678992", we don't wanna save that
+      if (bpm < 120) {
         ExercisePage.data.processNewBpm(bpm);
         $('#CurrentBpm').text(`${data.toString()} Bpm`);
         $('#MaxBpm').text(`${ExercisePage.data.bpmHigh} Bpm`);
