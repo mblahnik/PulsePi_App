@@ -69,21 +69,22 @@
                                         <div class="form-group"><label for="last_name"><strong>Last Name</strong></label><input id="ProfileMiddle" class="form-control" type="text" placeholder="Doe" name="last_name"></div>
                                     </div>
                                 </div>
+                                <div class="form-group"><button class="btn btn-primary btn-sm" type="button" id="SaveSettingsBtn">Save&nbsp;Settings</button></div>
                             </form>
                         </div>
                         <div class="card-body" style="padding-top: 0px;">
                             <form>
                                 <div class="form-row">
                                     <div class="col">
-                                        <div class="form-group"><label for="city"><strong>Weight</strong></label><input class="form-control" type="text" placeholder="Pound" name="city"></div>
-                                        <div class="form-group"><label for="city"><strong>Birth Date</strong></label><input class="form-control" type="text" placeholder="MM/DD/YYYY" name="city"></div>
+                                        <div class="form-group"><label for="city"><strong>Weight</strong></label><input class="form-control" type="text" placeholder="Pound" name="city" id="UserWeight"></div>
+                                        <div class="form-group"><label for="city"><strong>Birth Date</strong></label><input class="form-control" type="text" placeholder="MM/DD/YYYY" name="city" id="UserDOB"></div>
                                     </div>
                                     <div class="col">
-                                        <div class="form-group"><label for="country"><strong>Height</strong></label><input class="form-control" type="text" placeholder="Foot" name="country"></div>
-                                        <div class="form-group"><label for="country"><strong>Sex</strong></label><input class="form-control" type="text" placeholder="M/F" name="country"></div>
+                                        <div class="form-group"><label for="country"><strong>Height</strong></label><input class="form-control" type="text" placeholder="Foot" name="country" id="UserHeight"></div>
+                                        <div class="form-group"><label for="country"><strong>Sex</strong></label><input class="form-control" type="text" placeholder="M/F" name="country" id="UserSex"></div>
                                     </div>
                                 </div>
-                                <div class="form-group"><button class="btn btn-primary btn-sm" type="button">Save&nbsp;Settings</button></div>
+                                <div class="form-group"><button class="btn btn-primary btn-sm" type="button" id="SavebiometricsBtn">Save&nbsp;Biometrics</button></div>
                             </form>
                         </div>
                     </div>
@@ -118,6 +119,9 @@
             </div>
         </div>
     </div>
+    <script>
+    ProfilePage.init();
+    </script>
+
 </div>
 
-<script src="Profile.js"></script>
