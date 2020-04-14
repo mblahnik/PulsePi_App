@@ -90,5 +90,3 @@ const ExercisePage = {
     this.attachListeners();
   },
 };
-
-ExercisePage.init();

@@ -2,7 +2,6 @@
 const historyPage = {
   historyURL: 'https://pulsepi.azurewebsites.net/api/heartRate/getAllData',
   putDataInTable: function (data) {
-    console.log(data);
     data.forEach((element) => {
       $('#tableBody').append(`<tr>
                                 <td>${element.type}</td>
@@ -20,7 +19,7 @@ const historyPage = {
       type: 'POST',
       dataType: 'json',
       contentType: 'application/json',
-      data: JSON.stringify({ username: 'Elizabeth1' }),
+      data: JSON.stringify({ username: User.getInstance().UserName }),
       success: function (data) {
         historyPage.putDataInTable(data);
       },
@@ -34,5 +33,3 @@ const historyPage = {
     this.getHistoryData();
   },
 };
-
-historyPage.init();
