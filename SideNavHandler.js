@@ -25,6 +25,7 @@ function setLinksLoggedIn() {
     addExerciseLink();
     addHistoryLink();
     addProfileLink();
+    addAnalysisLink();
     addFaqLink();
 }
 
@@ -113,6 +114,23 @@ function addFaqLink() {
     }
 }
 
+function addAnalysisLink() {
+    if (!$('#analysisNav').length) {
+        $('#accordionSidebar')
+            .append(`<li class="nav-item" role="presentation" id="analysisNav">
+             <a class="nav-link pointer" id="analysisLink">
+             <i class="fas fa-table"></i><span>Analysis</span></a>
+             </li>`);
+
+        $('#analysisLink').click(function() {
+            $.get('./Component/Analysis.html', function(data) {
+                $('#root').html(data);
+                setAnalysisLinkActive('analysisLink');
+            });
+        });
+    }
+}
+
 //Force the Contents and nav bars into the correct positions.
 function setWindowSizes() {
     $('#content').height($(window).height() - 75); //50 is the height of the Top nav.
@@ -130,6 +148,11 @@ function setWindowSizes() {
  */
 function setNavLinkActive(id) {
     $('.nav-link.active').removeClass('active');
+    $('#' + id).addClass('active');
+}
+
+function setAnalysisLinkActive(id) {
+    $('.analysis-link.active').removeClass('active');
     $('#' + id).addClass('active');
 }
 
