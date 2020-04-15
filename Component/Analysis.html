@@ -1,19 +1,24 @@
-<div class="chart-container" style="position: relative; height: 60vh; width: 60vw;">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-6">
-                <select id="type">
-                    <option value="exPercentage">Exercise Efficiency</option>
-                    <option value="restPercentage">Resting Efficiency</option>
-                </select>
-            </div>
-            <div class="col-md-6">
-                <button type="button" id="loadChart">Load</button>
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 font-weight-bold">Analysis</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <select id="type">
+                        <option value="exPercentage">Exercise Efficiency</option>
+                        <option value="restPercentage">Resting Efficiency</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" id="loadChart">Load</button>
+                </div>
             </div>
         </div>
-    </div>
-    <div>
-        <canvas id="testChart"></canvas>
+        <div>
+            <canvas id="testChart"></canvas>
+        </div>
     </div>
     <script>analysisPage.init()</script>
 </div>
