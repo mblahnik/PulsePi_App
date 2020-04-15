@@ -1,6 +1,6 @@
 const analysisPage = {
     exIntensitiesURL: 'https://pulsepi.azurewebsites.net/api/biometric/getIntensities',
-    updateChart: function (data) {
+    updateChart: function (data, title, xlabel, ylabel) {
         var ctx = $('#testChart');
         var times = data.dates;
         var intensities = data.percentages;
@@ -9,13 +9,19 @@ const analysisPage = {
             data: {
                 labels: times,
                 datasets: [{
-                    label: 'Percentage of maximum heart rate',
                     data: intensities,
                     fill: false,
                     spanGaps:false
                 }]
             },
             options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: title
+                },
                 scales: {
                     xAxes: [{
                         distribution: 'series',
@@ -32,18 +38,26 @@ const analysisPage = {
                             source: 'data',
                             maxRotation: 45,
                             minRotation: 45,
-                        }
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: xlabel
+                          }
                     }],
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
-                        }
+                            beginAtZero: true,
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: ylabel
+                          }
                     }]
                 }
             }
         });
     },
-    getIntensityData: function (url) {
+    getIntensityData: function (url, title, xlabel, ylabel) {
         $.ajax({
             url: url,
             type: 'POST',
@@ -51,7 +65,7 @@ const analysisPage = {
             contentType: 'application/json',
             data: JSON.stringify({ username: User.getInstance().UserName }),
             success: function (data) {
-                analysisPage.updateChart(data);
+                analysisPage.updateChart(data, title, xlabel, ylabel);
             },
             error: function (data) {
                 console.log('error');
@@ -65,7 +79,7 @@ const analysisPage = {
     attachListeners: function () {
         $('#loadChart').click(() => {
           let name = $('#type').val()
-          if(name === 'exPercentage') this.getIntensityData(analysisPage.exIntensitiesURL);
+          if(name === 'exPercentage') this.getIntensityData(analysisPage.exIntensitiesURL, 'Exercise Efficiency', 'Date and Time of Exercise', 'Efficiency Percentage');
         });
     }
 };
