@@ -1,15 +1,16 @@
 const analysisPage = {
-    init: function () {
+    exIntensitiesURL: 'https://pulsepi.azurewebsites.net/api/biometric/getIntensities',
+    updateChart: function (data) {
         var ctx = $('#testChart');
-        var time_Array = ["2018-12-07 16:00:17", "2018-12-07 15:45:17", "2018-12-07 15:30:17", "2018-12-07 15:15:16", "2018-12-07 15:00:17", "2018-12-07 14:45:16", "2018-12-07 14:30:17", "2018-12-07 14:15:17", "2018-12-07 14:00:17", "2018-12-07 13:45:17", "2018-12-07 13:30:16", "2018-12-07 13:15:17"];
-        var meas_value_Array = [67, 90, 100, 98, 86, 80, 82, 65, 67, 70, 71, 73];
+        var times = data.dates;
+        var intensities = data.percentages;
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: time_Array,
+                labels: times,
                 datasets: [{
-                    label: 'Heart Rate',
-                    data: meas_value_Array,
+                    label: 'Percentage of maximum heart rate',
+                    data: intensities,
                     fill: false,
                     spanGaps:false
                 }]
@@ -17,6 +18,7 @@ const analysisPage = {
             options: {
                 scales: {
                     xAxes: [{
+                        distribution: 'series',
                         type: 'time',
                         time: {
                             parser: 'YYYY-MM-DD HH:mm:ss',
@@ -24,12 +26,12 @@ const analysisPage = {
                             displayFormats: {
                                 'minute': 'YYYY-MM-DD HH:mm:ss',
                                 'hour': 'YYYY-MM-DD HH:mm:ss'
-                            }
+                            }            
                         },
                         ticks: {
                             source: 'data',
                             maxRotation: 45,
-                            minRotation: 45
+                            minRotation: 45,
                         }
                     }],
                     yAxes: [{
@@ -39,6 +41,31 @@ const analysisPage = {
                     }]
                 }
             }
+        });
+    },
+    getIntensityData: function (url) {
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify({ username: User.getInstance().UserName }),
+            success: function (data) {
+                analysisPage.updateChart(data);
+            },
+            error: function (data) {
+                console.log('error');
+                console.log(data);
+            },
+        });
+    },
+    init: function() {
+        this.attachListeners();
+    },
+    attachListeners: function () {
+        $('#loadChart').click(() => {
+          let name = $('#type').val()
+          if(name === 'exPercentage') this.getIntensityData(analysisPage.exIntensitiesURL);
         });
     }
 };

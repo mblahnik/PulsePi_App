@@ -1,6 +1,19 @@
 <div class="chart-container" style="position: relative; height: 60vh; width: 60vw;">
-    <canvas id="testChart">
-
-    </canvas>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <select id="type">
+                    <option value="exPercentage">Exercise Efficiency</option>
+                    <option value="restPercentage">Resting Efficiency</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <button type="button" id="loadChart">Load</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <canvas id="testChart"></canvas>
+    </div>
     <script>analysisPage.init()</script>
 </div>
