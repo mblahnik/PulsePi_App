@@ -1,9 +1,10 @@
 const analysisPage = {
     exIntensitiesURL: 'https://pulsepi.azurewebsites.net/api/biometric/getIntensities',
+    restRatesURL: 'https://pulsepi.azurewebsites.net/api/heartRate/restingRates',
     updateChart: function (data, title, xlabel, ylabel) {
         var ctx = $('#testChart');
         var times = data.dates;
-        var intensities = data.percentages;
+        var intensities = data.percentages ?? data.rates;
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -65,6 +66,7 @@ const analysisPage = {
             contentType: 'application/json',
             data: JSON.stringify({ username: User.getInstance().UserName }),
             success: function (data) {
+                console.log(data);
                 analysisPage.updateChart(data, title, xlabel, ylabel);
             },
             error: function (data) {
@@ -80,6 +82,7 @@ const analysisPage = {
         $('#loadChart').click(() => {
           let name = $('#type').val()
           if(name === 'exPercentage') this.getIntensityData(analysisPage.exIntensitiesURL, 'Exercise Efficiency', 'Date and Time of Exercise', 'Efficiency Percentage');
+          if(name === 'restRates') this.getIntensityData(analysisPage.restRatesURL, 'Resting Rate Trends', 'Date and Time recorded', 'Heart Rate');
         });
     }
 };
