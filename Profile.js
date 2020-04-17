@@ -1,6 +1,7 @@
 const ProfilePage = {
   updateAccountUrl: '',
-  updateBiometricURL: '',
+  updateBiometricURL:
+    'https://pulsepi.azurewebsites.net/api/biometric/createBiometric',
   setFormValuesToUser: function () {
     $('#ProfileUsername').val(User.getInstance().UserName);
     $('#ProfileEmail').val(User.getInstance().Email);
@@ -52,7 +53,7 @@ const ProfilePage = {
     });
     $('#SaveSettingsBtn').click(function () {
       $.ajax({
-        url: updateAccountUrl,
+        url: ProfilePage.updateAccountUrl,
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
@@ -64,7 +65,7 @@ const ProfilePage = {
     $('#SavebiometricsBtn').click(function () {
       ProfilePage.biometricLoading();
       $.ajax({
-        url: updateBiometricURL,
+        url: ProfilePage.updateBiometricURL,
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
@@ -75,11 +76,13 @@ const ProfilePage = {
           sex: $('#UserSex').val(),
           dob: $('#UserDOB').val(),
         }),
-        success: function () {
-          // biometricNotLoading();
+        success: function (err) {
+          console.log(err);
+          ProfilePage.biometricNotLoading();
         },
-        error: function () {
-          // biometricNotLoading();
+        error: function (err) {
+          console.log(err);
+          ProfilePage.biometricNotLoading();
         },
       });
     });
