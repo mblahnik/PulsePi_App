@@ -102,5 +102,4 @@ function showPicture() {
 function hidePicture() {
     var img = document.getElementById('pic')
     img.style.display = "none";
-    img.style = "text-align:center";
 }
