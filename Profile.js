@@ -3,6 +3,8 @@ const ProfilePage = {
     'https://pulsepi.azurewebsites.net/api/account/updateAccount',
   updateBiometricURL:
     'https://pulsepi.azurewebsites.net/api/biometric/createBiometric',
+  getBiometricDataUrl:
+    'https://pulsepi.azurewebsites.net/api/biometric/getBiometrics',
   setFormValuesToUser: function () {
     $('#ProfileUsername').val(User.getInstance().UserName);
     $('#ProfileEmail').val(User.getInstance().Email);
@@ -38,6 +40,32 @@ const ProfilePage = {
       });
     });
   },
+  setBiometicData: function (data) {
+    $('#UserWeight').val(data.weight);
+    $('#UserHeight').val(data.height);
+    $('#UserSex').val(data.sex);
+    $('#UserDOB').val(data.dob);
+  },
+  getBiometricData: function () {
+    $.ajax({
+      url: ProfilePage.getBiometricDataUrl,
+      type: 'POST',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        username: User.getInstance().UserName,
+      }),
+      success: function (data) {
+        console.log('Got biometrics');
+        console.log(data);
+        ProfilePage.setBiometicData(data);
+      },
+      error: function (data) {
+        console.log('Error getting biometrics');
+        console.log(data);
+      },
+    });
+  },
   biometricLoading: function () {
     $('#SavebiometricsBtn')
       .html(`<div class="spinner-border text-primary" role="status">
@@ -68,12 +96,10 @@ const ProfilePage = {
         }),
         success: function (data) {
           console.log('worked');
-          console.log(data);
           User.getInstance().LogInAccount(data);
         },
         error: function (data) {
           console.log('didnt work');
-          console.log(data);
         },
       });
     });
@@ -109,6 +135,7 @@ const ProfilePage = {
     });
     this.setFormValuesToUser();
     this.setProfilePicture();
+    this.getBiometricData();
   },
 };
 
