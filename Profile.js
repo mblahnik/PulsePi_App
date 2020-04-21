@@ -1,5 +1,6 @@
 const ProfilePage = {
-  updateAccountUrl: '',
+  updateAccountUrl:
+    'https://pulsepi.azurewebsites.net/api/account/updateAccount',
   updateBiometricURL:
     'https://pulsepi.azurewebsites.net/api/biometric/createBiometric',
   setFormValuesToUser: function () {
@@ -57,9 +58,23 @@ const ProfilePage = {
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
-        data: JSON.stringify({}),
-        success: function () {},
-        error: function () {},
+        data: JSON.stringify({
+          username: User.getInstance().UserName,
+          avatarUrl: User.getInstance().AvatarUrl,
+          firstName: $('#ProfileFirst').val(),
+          middleName: $('#ProfileMiddle').val(),
+          lastName: $('#ProfileLast').val(),
+          email: $('#ProfileEmail').val(),
+        }),
+        success: function (data) {
+          console.log('worked');
+          console.log(data);
+          User.getInstance().LogInAccount(data);
+        },
+        error: function (data) {
+          console.log('didnt work');
+          console.log(data);
+        },
       });
     });
     $('#SavebiometricsBtn').click(function () {
