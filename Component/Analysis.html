@@ -1,3 +1,85 @@
+<link rel="stylesheet" href="assets/css/analysis.css">
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 font-weight-bold">Biometrics</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-header">Your Target <br> Heart Rate</div>
+                        <div class="help-tip">
+                            <p>This is target heart rate to acheive vigorous exercise.  It is 70 - 85 %
+                                of your maximum heart rate.</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-text" id="TargetHR"></div>
+                        </div>
+                    </div>         
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-header">Your Maximum <br> Heart Rate</div>
+                        <div class="help-tip">
+                            <p>This is your maximum heart rate.  It is based on your age.</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-text" id="MaxHR"></div>
+                        </div>
+                    </div>         
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-header">Your Heart <br> Rate Reserve</div>
+                        <div class="help-tip">
+                            <p>Your heart rate reserve measures the difference between your maximum heart rate and your 
+                                resting heart rate. The higher this number is, the better!
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-text" id="HRR"></div>
+                        </div>
+                    </div>         
+                </div>  
+                <div class="col-md-4">
+                    <div class="card">                     
+                        <div class="card-header">Zones</div>
+                        <div class="help-tip">
+                            <p>These are your exercise heart rate zones. <br> Each row indicates a heart rate and its <br> percentage 
+                                of your maximum heart rate. <br> Vigorous exercise is 70-85%</p>
+                        </div>
+                        <div class="card-body">
+                            <table class="table dataTable my-0" id="zonesTable">
+                                <thead>
+                                    <tr>
+                                        <th>Percentage</th>
+                                        <th>Target Heart Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="zonesBody"> 
+                                
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td><strong></strong></td>
+                                        <td><strong></strong></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>         
+                </div>  
+
+
+
+            </div>      
+        </div>
+    </div>
+    <script>analysisPage.bioInit()</script>
+</div>
 <div class="container-fluid">
     <div class="card shadow">
         <div class="card-header py-3">
