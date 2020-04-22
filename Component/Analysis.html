@@ -6,7 +6,7 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">Your Target <br> Heart Rate</div>
                         <div class="help-tip">
@@ -17,8 +17,6 @@
                             <div class="card-text" id="TargetHR"></div>
                         </div>
                     </div>         
-                </div>
-                <div class="col-md-2">
                     <div class="card">
                         <div class="card-header">Your Maximum <br> Heart Rate</div>
                         <div class="help-tip">
@@ -28,8 +26,6 @@
                             <div class="card-text" id="MaxHR"></div>
                         </div>
                     </div>         
-                </div>
-                <div class="col-md-2">
                     <div class="card">
                         <div class="card-header">Your Heart <br> Rate Reserve</div>
                         <div class="help-tip">
@@ -41,7 +37,7 @@
                             <div class="card-text" id="HRR"></div>
                         </div>
                     </div>         
-                </div>  
+                </div>   
                 <div class="col-md-4">
                     <div class="card">                     
                         <div class="card-header">Zones</div>
@@ -60,25 +56,31 @@
                                 <tbody id="zonesBody"> 
                                 
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td><strong></strong></td>
-                                        <td><strong></strong></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
                     </div>         
                 </div>  
-
-
-
+                <div class="col-md-4">
+                    <div class="imageCards">
+                    <div class="card border-0" id="biking">
+                        <i class='fas fa-biking' style='font-size:48px'></i>
+                    </div>
+                    <div class="card border-0" id="running">
+                        <i class='fas fa-running' style='font-size:48px'></i>
+                    </div>
+                    <div class="card border-0" id="hiking">
+                        <i class='fas fa-hiking' style='font-size:48px'></i>
+                    </div>
+                    <div class="card border-0" id="heartbeat">
+                        <i class='fas fa-heartbeat' style='font-size:48px'></i>
+                    </div>
+                    </div>
+                </div>
             </div>      
         </div>
     </div>
     <script>analysisPage.bioInit()</script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </div>
 <div class="container-fluid">
     <div class="card shadow">

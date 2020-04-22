@@ -1,3 +1,5 @@
+/* Source: for helptips https://tutorialzine.com/2014/07/css-inline-help-tips */
+
 .help-tip{
     position: absolute;
     top: 18px;
@@ -81,4 +83,25 @@
 @keyframes fadeIn {
     0% { opacity:0; }
     100% { opacity:100%; }
+}
+
+.imageCards {
+    padding-left: 85px;
+}
+
+#biking{
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+#running{
+    padding-bottom: 50px;
+}
+
+#hiking{
+    padding-bottom: 50px;
+}
+
+#heartbeat{
+    padding-bottom: 40px;
 }
