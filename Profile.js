@@ -75,12 +75,49 @@ const ProfilePage = {
   biometricNotLoading: function () {
     $('#SavebiometricsBtn').html(`Save&nbsp;Biometrics`);
   },
+  accountLoading: function () {
+    $('#SaveSettingsBtn')
+      .html(`<div class="spinner-border text-primary" role="status">
+           <span class="sr-only">Loading...</span>
+           </div>`);
+  },
+  accountNotLoading: function () {
+    $('#SaveSettingsBtn').html(`Save&nbsp;Settings`);
+  },
+  setBiometricMessageOkay: function () {
+    $('#BiometricMessage').html(
+      `<span class="text-success">Biometrics Updated</span>`
+    );
+  },
+  setAccountMessageOkay: function () {
+    $('#SettingsMessage').html(
+      `<span class="text-success">Settings Saved</span>`
+    );
+  },
+  setBiometricMessageError: function () {
+    $('#BiometricMessage').html(
+      `<span class="text-danger">Error Updating Biometrics</span>`
+    );
+  },
+  setAccountMessageError: function () {
+    $('#SettingsMessage').html(
+      `<span class="text-danger">Error Saving Settings</span>`
+    );
+  },
+  setBiometricMessageClear: function () {
+    $('#BiometricMessage').html(``);
+  },
+  setAccountMessageClear: function () {
+    $('#SettingsMessage').html(``);
+  },
   attachListeners: function () {
     $('#avatarChange').click(function () {
       ProfilePage.addAvatarsToModal();
       $('#avatarSelectModal').modal('show');
     });
     $('#SaveSettingsBtn').click(function () {
+      ProfilePage.setAccountMessageClear();
+      ProfilePage.accountLoading();
       $.ajax({
         url: ProfilePage.updateAccountUrl,
         type: 'POST',
@@ -95,16 +132,19 @@ const ProfilePage = {
           email: $('#ProfileEmail').val(),
         }),
         success: function (data) {
-          console.log('worked');
+          ProfilePage.setAccountMessageOkay();
+          ProfilePage.accountNotLoading();
           User.getInstance().LogInAccount(data);
         },
         error: function (data) {
-          console.log('didnt work');
+          ProfilePage.setAccountMessageError();
+          ProfilePage.accountNotLoading();
         },
       });
     });
     $('#SavebiometricsBtn').click(function () {
       ProfilePage.biometricLoading();
+      ProfilePage.setBiometricMessageClear();
       $.ajax({
         url: ProfilePage.updateBiometricURL,
         type: 'POST',
@@ -118,11 +158,11 @@ const ProfilePage = {
           dob: $('#UserDOB').val(),
         }),
         success: function (err) {
-          console.log(err);
+          ProfilePage.setBiometricMessageOkay();
           ProfilePage.biometricNotLoading();
         },
         error: function (err) {
-          console.log(err);
+          ProfilePage.setAccountMessageError();
           ProfilePage.biometricNotLoading();
         },
       });
