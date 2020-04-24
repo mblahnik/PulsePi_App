@@ -2,7 +2,7 @@ const $ = require('jquery');
 const CreateAccountURL =
   'https://pulsepi.azurewebsites.net/api/account/createAccount';
 
-const required = function(formControlId) {
+const required = function (formControlId) {
   let value = $(formControlId).val();
   if (!/\S/.test(value)) {
     $(formControlId).addClass('is-invalid');
@@ -13,13 +13,11 @@ const required = function(formControlId) {
   } else {
     $(formControlId).removeClass('is-invalid');
     if ($(formControlId).siblings('.required').length)
-      $(formControlId)
-        .siblings('.required')
-        .remove();
+      $(formControlId).siblings('.required').remove();
   }
 };
 
-const mustMatch = function(formControlId) {
+const mustMatch = function (formControlId) {
   if ($(formControlId).val() && $('#CAPasswordInput').val()) {
     if ($(formControlId).val() !== $('#CAPasswordInput').val()) {
       $(formControlId).addClass('is-invalid');
@@ -30,9 +28,7 @@ const mustMatch = function(formControlId) {
     } else {
       $(formControlId).removeClass('is-invalid');
       if ($(formControlId).siblings('.match').length)
-        $(formControlId)
-          .siblings('.match')
-          .remove();
+        $(formControlId).siblings('.match').remove();
     }
   }
 };
@@ -43,60 +39,60 @@ const formIdsAndValidators = {
   '#CAPasswordRepeat': [required, mustMatch],
   '#CAFirstName': [required],
   '#CALastName': [required],
-  '#CAInputEmail': [required]
+  '#CAInputEmail': [required],
 };
 
-const verifyForm = function() {
+const verifyForm = function () {
   for (let [key, value] of Object.entries(formIdsAndValidators))
-    value.forEach(x => x(key));
+    value.forEach((x) => x(key));
 
   if ($('.is-invalid').length) return false;
   else return true;
 };
 
-const showErrorMessage = function() {
+const showErrorMessage = function () {
   $('#errorMessage').html(`Error Creating Account`);
 };
 
-const removeErrorMessage = function() {
+const removeErrorMessage = function () {
   $('#errorMessage').html(``);
 };
 
 const CreateAccountWindow = {
   remote: require('electron'),
-  ShowLoading: function() {
+  ShowLoading: function () {
     $('#SubmitCreateAccountBtn')
       .html(`<div class="spinner-border text-primary" role="status">
     <span class="sr-only">Please Wait...</span>
   </div>`);
   },
-  RemoveSpiner: function() {
+  RemoveSpiner: function () {
     $('#SubmitCreateAccountBtn').html(`Register Account`);
   },
-  OpenWindow: function() {
+  OpenWindow: function () {
     const win = new remote.BrowserWindow({
       width: 800,
       height: 600,
       icon: __dirname + './assets/img/icon/heart.png', //Set the icon for the system tray
       //frame: false,
       webPreferences: {
-        nodeIntegration: true
-      }
+        nodeIntegration: true,
+      },
     });
     win.loadFile('Register.html');
     win.setMenu(null);
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
   },
-  setFormValidation: function() {
-    $('form').change(function(event) {
+  setFormValidation: function () {
+    $('form').change(function (event) {
       let id = `#${event.target.id}`;
-      formIdsAndValidators[id].forEach(validatorfn => {
+      formIdsAndValidators[id].forEach((validatorfn) => {
         validatorfn(id);
       });
     });
   },
-  setSubmitListener: function() {
-    $('#SubmitCreateAccountBtn').click(function() {
+  setSubmitListener: function () {
+    $('#SubmitCreateAccountBtn').click(function () {
       removeErrorMessage();
       if (verifyForm()) {
         CreateAccountWindow.ShowLoading();
@@ -110,9 +106,9 @@ const CreateAccountWindow = {
             password: $('#CAPasswordInput').val(),
             firstName: $('#CAFirstName').val(),
             lastName: $('#CALastName').val(),
-            email: $('#CAInputEmail').val()
+            email: $('#CAInputEmail').val(),
           }),
-          success: function(data) {
+          success: function (data) {
             console.log('good');
             console.log(data);
             CreateAccountWindow.RemoveSpiner();
@@ -121,18 +117,18 @@ const CreateAccountWindow = {
                               '#CAUsernameInput'
                             ).val()}</strong>`);
           },
-          error: function(data) {
+          error: function (data) {
             showErrorMessage();
             CreateAccountWindow.RemoveSpiner();
-          }
+          },
         });
       }
     });
   },
-  init: function() {
+  init: function () {
     this.setSubmitListener();
     this.setFormValidation();
-  }
+  },
 };
 
 CreateAccountWindow.init();
