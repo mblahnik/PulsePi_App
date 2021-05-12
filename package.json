@@ -18,7 +18,7 @@
   "homepage": "https://github.com/mblahnik/PulsePI_APP#readme",
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "custom-electron-titlebar": "^3.2.2-hotfix62",
     "electron": "^8.5.2",
     "jquery": "^3.5.0",
